@@ -1,30 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Network - Protect Earth</title>
+    <title>星际探索 - 探索宇宙奥秘</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Noto Sans SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         :root {
-            --primary: #2e7d32;
-            --secondary: #4caf50;
-            --accent: #8bc34a;
-            --light: #e8f5e9;
-            --dark: #1b5e20;
-            --text: #333333;
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --glow: #0f3460;
+            --light: #eaeaea;
+            --dark: #0a0a14;
+            --text: #c9c9c9;
             --white: #ffffff;
+            --star-gold: #ffd700;
         }
 
         body {
-            background-color: var(--light);
+            background-color: var(--dark);
             color: var(--text);
             line-height: 1.6;
         }
@@ -36,7 +39,8 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 20px rgba(233, 69, 96, 0.3);
+            border-bottom: 1px solid rgba(233, 69, 96, 0.2);
         }
 
         .container {
@@ -57,10 +61,20 @@
             gap: 10px;
             font-size: 1.8rem;
             font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .logo i {
             font-size: 2rem;
+            color: var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
         }
 
         nav ul {
@@ -92,7 +106,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--accent);
+            background: linear-gradient(to right, var(--accent), var(--star-gold));
             transition: width 0.3s ease;
         }
 
@@ -101,35 +115,54 @@
         }
 
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');
+            background: linear-gradient(rgba(10, 10, 20, 0.7), rgba(10, 10, 20, 0.5)), url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             height: 80vh;
             display: flex;
             align-items: center;
             text-align: center;
             color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(233, 69, 96, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(15, 52, 96, 0.2) 0%, transparent 50%);
         }
 
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 3px;
         }
 
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
+            color: var(--light);
         }
 
         .btn {
             display: inline-block;
-            background-color: var(--accent);
+            background: linear-gradient(135deg, var(--accent), #ff6b6b);
             color: var(--white);
             padding: 0.8rem 2rem;
             border-radius: 50px;
@@ -138,13 +171,14 @@
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .btn:hover {
-            background-color: var(--primary);
             transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 30px rgba(233, 69, 96, 0.6);
         }
 
         section {
@@ -158,10 +192,11 @@
 
         .section-title h2 {
             font-size: 2.5rem;
-            color: var(--primary);
+            color: var(--white);
             margin-bottom: 1rem;
             position: relative;
             display: inline-block;
+            font-family: 'Orbitron', sans-serif;
         }
 
         .section-title h2::after {
@@ -172,7 +207,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background-color: var(--accent);
+            background: linear-gradient(to right, var(--accent), var(--star-gold));
             border-radius: 2px;
         }
 
@@ -192,7 +227,8 @@
         .about-img {
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 40px rgba(233, 69, 96, 0.2);
+            border: 1px solid rgba(233, 69, 96, 0.3);
         }
 
         .about-img img {
@@ -209,7 +245,8 @@
         .about-text h3 {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
-            color: var(--dark);
+            color: var(--white);
+            font-family: 'Orbitron', sans-serif;
         }
 
         .about-text p {
@@ -226,94 +263,120 @@
         .stat-item {
             text-align: center;
             padding: 2rem 1rem;
-            background-color: var(--white);
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
+            border: 1px solid rgba(233, 69, 96, 0.2);
         }
 
         .stat-item:hover {
             transform: translateY(-10px);
+            border-color: var(--accent);
         }
 
         .stat-item i {
             font-size: 2.5rem;
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: 1rem;
         }
 
         .stat-item h3 {
             font-size: 2.5rem;
-            color: var(--dark);
+            color: var(--white);
             margin-bottom: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
         }
 
         .stat-item p {
             color: var(--text);
         }
 
-        .initiatives {
-            background-color: var(--white);
+        .missions {
+            background: linear-gradient(180deg, var(--dark) 0%, var(--secondary) 50%, var(--dark) 100%);
         }
 
-        .initiatives-grid {
+        .missions-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
 
-        .initiative-card {
-            background-color: var(--light);
+        .mission-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
+            border: 1px solid rgba(233, 69, 96, 0.2);
         }
 
-        .initiative-card:hover {
+        .mission-card:hover {
             transform: translateY(-10px);
+            border-color: var(--accent);
         }
 
-        .initiative-img {
+        .mission-img {
             height: 200px;
             overflow: hidden;
         }
 
-        .initiative-img img {
+        .mission-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
 
-        .initiative-card:hover .initiative-img img {
+        .mission-card:hover .mission-img img {
             transform: scale(1.1);
         }
 
-        .initiative-content {
+        .mission-content {
             padding: 1.5rem;
         }
 
-        .initiative-content h3 {
+        .mission-content h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--dark);
+            color: var(--white);
+            font-family: 'Orbitron', sans-serif;
         }
 
-        .initiative-content p {
+        .mission-content p {
             margin-bottom: 1.5rem;
         }
 
         .cta {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--glow), var(--primary));
             color: var(--white);
             text-align: center;
             padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.3"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0.5;
+        }
+
+        .cta > * {
+            position: relative;
+            z-index: 1;
         }
 
         .cta h2 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
         }
 
         .cta p {
@@ -325,12 +388,12 @@
         }
 
         .cta .btn {
-            background-color: var(--white);
+            background: var(--white);
             color: var(--primary);
         }
 
         .cta .btn:hover {
-            background-color: var(--accent);
+            background: var(--accent);
             color: var(--white);
         }
 
@@ -338,6 +401,7 @@
             background-color: var(--dark);
             color: var(--white);
             padding: 3rem 0 1rem;
+            border-top: 1px solid rgba(233, 69, 96, 0.2);
         }
 
         .footer-content {
@@ -352,6 +416,7 @@
             margin-bottom: 1.5rem;
             position: relative;
             padding-bottom: 10px;
+            font-family: 'Orbitron', sans-serif;
         }
 
         .footer-column h3::after {
@@ -361,7 +426,7 @@
             left: 0;
             width: 40px;
             height: 2px;
-            background-color: var(--accent);
+            background: linear-gradient(to right, var(--accent), var(--star-gold));
         }
 
         .footer-column p {
@@ -377,7 +442,7 @@
         }
 
         .footer-links li a {
-            color: var(--light);
+            color: var(--text);
             text-decoration: none;
             transition: all 0.3s ease;
         }
@@ -398,16 +463,18 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, var(--secondary), var(--glow));
             border-radius: 50%;
             color: var(--white);
             text-decoration: none;
             transition: all 0.3s ease;
+            border: 1px solid rgba(233, 69, 96, 0.3);
         }
 
         .social-links a:hover {
-            background-color: var(--accent);
+            background: var(--accent);
             transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(233, 69, 96, 0.4);
         }
 
         .copyright {
@@ -420,6 +487,33 @@
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--accent);
+        }
+
+        /* Stars animation */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
         }
 
         @media (max-width: 992px) {
@@ -427,7 +521,7 @@
                 grid-template-columns: 1fr;
             }
             
-            .initiatives-grid {
+            .missions-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
@@ -455,11 +549,11 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: var(--primary);
+                background: linear-gradient(to bottom, var(--primary), var(--secondary));
                 flex-direction: column;
                 padding: 1rem 0;
                 text-align: center;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             }
             
             nav ul.active {
@@ -475,7 +569,7 @@
                 display: block;
             }
             
-            .initiatives-grid {
+            .missions-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -486,32 +580,38 @@
             .stats {
                 grid-template-columns: 1fr;
             }
+
+            .logo {
+                font-size: 1.4rem;
+            }
         }
 
-        /* Animation for stats counter */
         .counter {
             transition: all 0.5s ease;
         }
     </style>
 </head>
 <body>
+    <!-- Stars Background -->
+    <div class="stars" id="stars"></div>
+
     <!-- Header -->
     <header>
         <div class="container nav-container">
             <div class="logo">
-                <i class="fas fa-seedling"></i>
-                <span>Green Network</span>
+                <i class="fas fa-rocket"></i>
+                <span>星际探索</span>
             </div>
             <nav>
                 <div class="mobile-menu">
                     <i class="fas fa-bars"></i>
                 </div>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#initiatives">Initiatives</a></li>
-                    <li><a href="#get-involved">Get Involved</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#missions">探索任务</a></li>
+                    <li><a href="#join">加入我们</a></li>
+                    <li><a href="#contact">联系方式</a></li>
                 </ul>
             </nav>
         </div>
@@ -520,9 +620,9 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container hero-content">
-            <h1>Protect Our Planet, Preserve Our Future</h1>
-            <p>Join the global movement to create a sustainable world through conservation, education, and community action.</p>
-            <a href="#get-involved" class="btn">Join Our Network</a>
+            <h1>探索宇宙 · 触及星辰</h1>
+            <p>加入我们的太空探索之旅，揭开宇宙最深处的神秘面纱，共同见证人类文明的星际征程。</p>
+            <a href="#join" class="btn">开启星际之旅</a>
         </div>
     </section>
 
@@ -530,82 +630,82 @@
     <section id="about">
         <div class="container">
             <div class="section-title">
-                <h2>About Green Network</h2>
-                <p>We are a global community dedicated to environmental protection and sustainable development.</p>
+                <h2>关于星际探索</h2>
+                <p>我们是一个致力于太空探索与科学普及的国际化组织。</p>
             </div>
             <div class="about-content">
                 <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team planting trees">
+                    <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="太空站">
                 </div>
                 <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>Green Network is committed to creating a sustainable future by protecting natural ecosystems, promoting renewable energy, and empowering communities to take environmental action.</p>
-                    <p>Founded in 2010, we've grown from a small grassroots organization to an international network with over 50,000 members across 120 countries.</p>
-                    <p>Our approach combines scientific research, community engagement, and policy advocacy to address the most pressing environmental challenges of our time.</p>
-                    <a href="#" class="btn">Learn More</a>
+                    <h3>我们的使命</h3>
+                    <p>星际探索致力于推动人类对宇宙的认知边界，通过尖端科技研发、国际合作探测计划以及全民科普教育，让每个人都能参与到这场伟大的星际征程中。</p>
+                    <p>自2015年成立以来，我们已从一个小型科研团队发展成为拥有超过30,000名成员、横跨85个国家的国际性太空探索网络。</p>
+                    <p>我们的方法结合了前沿科学研究、技术创新和公众参与，共同应对太空探索领域最具挑战性的课题。</p>
+                    <a href="#" class="btn">了解更多</a>
                 </div>
             </div>
             <div class="stats">
                 <div class="stat-item">
-                    <i class="fas fa-tree"></i>
-                    <h3 class="counter" data-target="2500000">0</h3>
-                    <p>Trees Planted</p>
+                    <i class="fas fa-satellite"></i>
+                    <h3 class="counter" data-target="156">0</h3>
+                    <p>发射卫星数</p>
                 </div>
                 <div class="stat-item">
-                    <i class="fas fa-users"></i>
-                    <h3 class="counter" data-target="50000">0</h3>
-                    <p>Active Members</p>
+                    <i class="fas fa-user-astronaut"></i>
+                    <h3 class="counter" data-target="30000">0</h3>
+                    <p>活跃成员</p>
                 </div>
                 <div class="stat-item">
-                    <i class="fas fa-globe-americas"></i>
-                    <h3 class="counter" data-target="120">0</h3>
-                    <p>Countries Reached</p>
+                    <i class="fas fa-globe"></i>
+                    <h3 class="counter" data-target="85">0</h3>
+                    <p>覆盖国家</p>
                 </div>
                 <div class="stat-item">
-                    <i class="fas fa-recycle"></i>
-                    <h3 class="counter" data-target="1500">0</h3>
-                    <p>Cleanup Projects</p>
+                    <i class="fas fa-star"></i>
+                    <h3 class="counter" data-target="2847">0</h3>
+                    <p>发现星体</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Initiatives Section -->
-    <section class="initiatives" id="initiatives">
+    <!-- Missions Section -->
+    <section class="missions" id="missions">
         <div class="container">
             <div class="section-title">
-                <h2>Our Initiatives</h2>
-                <p>Discover the key programs and projects we're implementing to protect our planet.</p>
+                <h2>探索任务</h2>
+                <p>了解我们正在进行的关键太空探索项目和研究计划。</p>
             </div>
-            <div class="initiatives-grid">
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://dialogue.earth/content/uploads/2021/04/lessons-from-the-rush-to-reforest-china-dialogue-2400x1599.jpg" alt="Reforestation">
+            <div class="missions-grid">
+                <div class="mission-card">
+                    <div class="mission-img">
+                        <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80" alt="火星探测">
                     </div>
-                    <div class="initiative-content">
-                        <h3>Global Reforestation</h3>
-                        <p>Planting millions of trees worldwide to restore ecosystems, combat climate change, and protect biodiversity.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Ocean Conservation">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Ocean Conservation</h3>
-                        <p>Protecting marine ecosystems, reducing plastic pollution, and promoting sustainable fishing practices.</p>
-                        <a href="#" class="btn">Learn More</a>
+                    <div class="mission-content">
+                        <h3>火星探测计划</h3>
+                        <p>部署先进探测器登陆火星表面，寻找生命存在的证据，为未来人类移民做准备。</p>
+                        <a href="#" class="btn">查看详情</a>
                     </div>
                 </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Renewable Energy">
+                <div class="mission-card">
+                    <div class="mission-img">
+                        <img src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-4.0.3&auto=format&fit=crop&w=2080&q=80" alt="深空观测">
                     </div>
-                    <div class="initiative-content">
-                        <h3>Renewable Energy</h3>
-                        <p>Promoting solar, wind, and other clean energy sources to reduce dependence on fossil fuels.</p>
-                        <a href="#" class="btn">Learn More</a>
+                    <div class="mission-content">
+                        <h3>深空观测网络</h3>
+                        <p>利用全球望远镜阵列和太空观测站，监测遥远星系和系外行星。</p>
+                        <a href="#" class="btn">查看详情</a>
+                    </div>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-img">
+                        <img src="https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="空间站">
+                    </div>
+                    <div class="mission-content">
+                        <h3>轨道空间站</h3>
+                        <p>建设新一代国际空间站，开展微重力科学实验和太空技术研发。</p>
+                        <a href="#" class="btn">查看详情</a>
                     </div>
                 </div>
             </div>
@@ -613,11 +713,11 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta" id="get-involved">
+    <section class="cta" id="join">
         <div class="container">
-            <h2>Join Our Global Movement</h2>
-            <p>Together, we can create a sustainable future for generations to come. Every action counts, no matter how small.</p>
-            <a href="#" class="btn">Become a Member</a>
+            <h2>加入星际探索者联盟</h2>
+            <p>无论你是科学家、工程师、教育工作者还是太空爱好者，都可以成为这场伟大征程的一部分。</p>
+            <a href="#" class="btn">立即加入</a>
         </div>
     </section>
 
@@ -626,78 +726,96 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>Green Network</h3>
-                    <p>We are dedicated to protecting our planet through collaborative action, education, and sustainable solutions.</p>
+                    <h3>星际探索</h3>
+                    <p>我们致力于推动太空探索事业，通过科学研究、技术创新和全民教育，共同开创人类的星际未来。</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-bilibili"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
-                    <h3>Quick Links</h3>
+                    <h3>快速链接</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#initiatives">Initiatives</a></li>
-                        <li><a href="#get-involved">Get Involved</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                        <li><a href="#missions">探索任务</a></li>
+                        <li><a href="#join">加入我们</a></li>
+                        <li><a href="#contact">联系方式</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Our Programs</h3>
+                    <h3>研究项目</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Reforestation</a></li>
-                        <li><a href="#">Ocean Cleanup</a></li>
-                        <li><a href="#">Wildlife Protection</a></li>
-                        <li><a href="#">Climate Education</a></li>
-                        <li><a href="#">Sustainable Agriculture</a></li>
+                        <li><a href="#">火星殖民</a></li>
+                        <li><a href="#">小行星采矿</a></li>
+                        <li><a href="#">系外行星探测</a></li>
+                        <li><a href="#">太空生物学</a></li>
+                        <li><a href="#">引力波研究</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Copper Creek Drive, New York</p>
-                    <p><i class="fas fa-phone"></i> +1 (312) 171-0771</p>
-                    <p><i class="fas fa-envelope"></i> support@greennetwork.org</p>
+                    <h3>联系我们</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 北京市海淀区中关村科技园</p>
+                    <p><i class="fas fa-phone"></i> +86 (10) 8888-6666</p>
+                    <p><i class="fas fa-envelope"></i> contact@starexplorer.cn</p>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Green Network. All rights reserved.</p>
+                <p>&copy; 2025 星际探索. 保留所有权利.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
+        // 生成星星背景
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const numberOfStars = 100;
+            
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.width = Math.random() * 2 + 1 + 'px';
+                star.style.height = star.style.width;
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        createStars();
+
+        // 移动端菜单切换
         document.querySelector('.mobile-menu').addEventListener('click', function() {
             document.querySelector('nav ul').classList.toggle('active');
         });
 
-        // Counter Animation
+        // 数字动画
         function animateCounters() {
             const counters = document.querySelectorAll('.counter');
-            const speed = 200; // The lower the slower
+            const speed = 200;
             
             counters.forEach(counter => {
                 const target = +counter.getAttribute('data-target');
                 const count = +counter.innerText;
-                
                 const inc = target / speed;
                 
                 if(count < target) {
                     counter.innerText = Math.ceil(count + inc);
                     setTimeout(animateCounters, 1);
                 } else {
-                    counter.innerText = target;
+                    counter.innerText = target.toLocaleString();
                 }
             });
         }
 
-        // Initialize counters when page loads
+        // 页面加载时启动计数器
         window.addEventListener('load', animateCounters);
 
-        // Smooth scrolling for navigation links
+        // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -718,5 +836,5 @@
         });
     </script>
 </body>
-
 </html>
+
